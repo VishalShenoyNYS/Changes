@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Poppins&family=Ubuntu+Condensed&display=swap');
+@import url('https://vishalshenoy2002.github.io/StyleWiz/buttons.css');
+
+:root {
+    --font-family-01: 'Acme', sans-serif;
+    --font-family-02: 'Poppins', sans-serif;
+    --font-family-03: 'Ubuntu Condensed', sans-serif;
+
+    --cream-01: #EFEFD0;
+    --white-01: #FFFFFF;
+    --black-01: #000000;
+    --blue-01: #0684BE;
+    --blue-02: #04668D;
+    --orange-01: #F36915;
+
+    --blue-01-glass: #0684BE50;
+    --blue-02-glass: #04668D50;
+    --orange-01-glass: #F3691550;
+    --white-01-glass: #FFFFFF50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-02);
+    overflow-x: hidden;
+}
+
+header, footer {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    padding: 1rem;
+}
+
+.nav-items {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item {
+    list-style: none;
+    font-family: var(--font-family-02);
+    transition: all 1s ease-in-out;
+}
+
+.nav-item a {
+    font-weight: 900;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--blue-02);
+}
+
+.nav-item:hover {
+    transform: translateY(-0.75rem);
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-background video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: calc(100vh - 60px); 
+    padding: 1rem;
+}
+
+.info-container {
+    max-width: 400px;
+    color: var(--white-01);
+    margin-left: 2rem;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+.info-container h1 {
+    font-family: var(--font-family-01);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-container p {
+    font-family: var(--font-family-03);
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 450px; 
+    margin-right: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeInRight 1s ease-in-out;
+}
+
+.form-container h2 {
+    font-family: var(--font-family-01);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--white-01);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem; 
+    border: 1px solid var(--blue-02);
+    border-radius: 8px;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    color: var(--blue-02);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-group input::placeholder {
+    color: var(--blue-02);
+    opacity: 0.7;
+    transition: all 0.3s ease-in-out;
+    font-size: 0.750rem; /* placeholder font size */
+}
+
+.form-group input:focus {
+    border-color: var(--blue-01);
+    background-color: var(--white-01);
+    box-shadow: 0 0 8px rgba(0, 132, 190, 0.5);
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0 5px;
+    color: var(--blue-02);
+    transition: all 0.3s ease-in-out;
+    font-size: 1rem; /*  label font size */
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    transform: translateY(-1.5rem);
+    font-size: 0.875rem;  
+    color: var(--blue-01);
+}
+
+.login-button {
+    background-color: var(--blue-01);
+    color: var(--white-01);
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 50px; /* Round-shaped button */
+    cursor: pointer;
+    font-family: var(--font-family-02);
+    font-size: 1rem;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+    background-color: var(--blue-02);
+    transform: scale(1.1); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.social-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.social-button {
+    background-color: var(--white-01);
+    border: none;
+    padding: 0.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.social-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.signup-link {
+    display: block;
+    margin-top: 1rem;
+    color: var(--blue-01);
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+.signup-container {
+    display: none;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-container.fadeInRight {
+    animation: fadeInRight 1s ease-in-out;
+}
+
+.form-container.fadeInLeft {
+    animation: fadeInLeft 1s ease-in-out;
+}
+
+.info-container.fadeInDown {
+    animation: fadeInDown 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 60px);
+        padding: 2rem;
+    }
+
+    .info-container {
+        margin: 0 0 2rem 0;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .form-container {
+        margin: 2rem 0;
+        padding: 1.5rem;
+    }
+}
