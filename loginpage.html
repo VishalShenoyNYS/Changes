@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New You Solutions</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Teja.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{{ url_for('static',filename='imgs/small-logo.png')}}" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Acme&family=Poppins&family=Ubuntu+Condensed&display=swap');
+        @import url('https://vishalshenoy2002.github.io/StyleWiz/buttons.css');
+
+        :root {
+            --font-family-01: 'Acme', sans-serif;
+            --font-family-02: 'Poppins', sans-serif;
+            --font-family-03: 'Ubuntu Condensed', sans-serif;
+
+            --cream-01: #EFEFD0;
+            --white-01: #FFFFFF;
+            --black-01: #000000;
+            --blue-01: #0684BE;
+            --blue-02: #04668D;
+            --orange-01: #F36915;
+
+            --blue-01-glass: #0684BE50;
+            --blue-02-glass: #04668D50;
+            --orange-01-glass: #F3691550;
+            --white-01-glass: #FFFFFF50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family-02);
+            overflow-x: hidden;
+        }
+
+        header, footer {
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            width: 100vw;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+            padding: 1rem;
+        }
+
+        .nav-items {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-item {
+            list-style: none;
+            font-family: var(--font-family-02);
+            transition: all 1s ease-in-out;
+        }
+
+        .nav-item a {
+            font-weight: 900;
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: var(--blue-02);
+        }
+
+        .nav-item:hover {
+            transform: translateY(-0.75rem);
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: calc(100vh - 60px); 
+            padding: 1rem;
+        }
+
+        .info-container {
+            max-width: 400px;
+            color: var(--white-01);
+            margin-left: 2rem;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .info-container h1 {
+            font-family: var(--font-family-01);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-container p {
+            font-family: var(--font-family-03);
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 450px; 
+            margin-right: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .form-container h2 {
+            font-family: var(--font-family-01);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--white-01);
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem; 
+            border: 1px solid var(--blue-02);
+            border-radius: 8px;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            color: var(--blue-02);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: var(--blue-02);
+            opacity: 0.7;
+            transition: all 0.3s ease-in-out;
+            font-size: 0.750rem; /* placeholder font size */
+        }
+
+        .form-group input:focus {
+            border-color: var(--blue-01);
+            background-color: var(--white-01);
+            box-shadow: 0 0 8px rgba(0, 132, 190, 0.5);
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0 5px;
+            color: var(--blue-02);
+            transition: all 0.3s ease-in-out;
+            font-size: 1rem; /*  label font size */
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label {
+            transform: translateY(-1.5rem);
+            font-size: 0.875rem;  
+            color: var(--blue-01);
+        }
+
+        .login-button {
+            background-color: var(--blue-01);
+            color: var(--white-01);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 50px; /* Round-shaped button */
+            cursor: pointer;
+            font-family: var(--font-family-02);
+            font-size: 1rem;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button:hover {
+            background-color: var(--blue-02);
+            transform: scale(1.1); 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .social-button {
+            background-color: var(--white-01);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .signup-link {
+            display: block;
+            margin-top: 1rem;
+            color: var(--blue-01);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+
+        .signup-container {
+            display: none;
+        }
+
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                transform: translateX(20%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-20%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-container.fadeInRight {
+            animation: fadeInRight 1s ease-in-out;
+        }
+
+        .form-container.fadeInLeft {
+            animation: fadeInLeft 1s ease-in-out;
+        }
+
+        .info-container.fadeInDown {
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: calc(100vh - 60px);
+                padding: 2rem;
+            }
+
+            .info-container {
+                margin: 0 0 2rem 0;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .form-container {
+                margin: 2rem 0;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="https://res.cloudinary.com/detoaozcx/video/upload/v1696511637/samples/sea-turtle.mp4"  type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+    </div>
+    <header>
+        <div class="navbar">
+            <div class="nav-logo">
+                <img  src="" alt="Logo">
+            </div>
+            <ul class="nav-items">
+                <li class="nav-item">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#connect">Connect</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <div class="content">
+            <div class="info-container fadeInDown">
+                <h1>Welcome to New You Solutions</h1>
+                <p>Transform your life with our comprehensive solutions. Join us today and start your journey towards a better you. Our services are designed to help you achieve your goals and live a fulfilling life.</p>
+            </div>
+            <div class="form-container login-container fadeInRight">
+                <h2>Login</h2>
+                <form action="{{ url_for('login') }}" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="username" name="username" required>
+                        <label for="username">Username:</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Password:</label>
+                    </div>
+                    <button type="submit" class="login-button">Login</button>
+                </form>
+                <div class="social-buttons">
+                    <button class="social-button">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-button">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="social-button">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                </div>
+                <a class="signup-link" id="showSignup">Don't have an account? Sign up here</a>
+            </div>
+            <div class="form-container signup-container">
+                <h2>Sign Up</h2>
+                <form action="{{ url_for('signup') }}" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="signup-username" name="username" required>
+                        <label for="signup-username">Username:</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="signup-email" name="email" required>
+                        <label for="signup-email">Email:</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="signup-password" name="password" required>
+                        <label for="signup-password">Password:</label>
+                    </div>
+                    <button type="submit" class="login-button">Sign Up</button>
+                </form>
+                <div class="social-buttons">
+                    <button class="social-button">
+                        <i class="fab fa-google"></i>
+                    </button>
+                    <button class="social-button">
+                        <i class="fab fa-twitter"></i>
+                    </button>
+                    <button class="social-button">
+                        <i class="fab fa-facebook-f"></i>
+                    </button>
+                </div>
+                <a class="signup-link" id="showLogin">Already have an account? Log in here</a>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <!-- Footer content here -->
+    </footer>
+    <script src="{{ url_for('static', filename='js/backToTop.js') }}"></script>
+    <button id="backToTopButton">
+        <i class="fa-solid fa-caret-up icon"></i>
+    </button>
+    <script>
+        document.getElementById('showSignup').addEventListener('click', function() {
+            document.querySelector('.login-container').classList.add('fadeOutRight');
+            setTimeout(function() {
+                document.querySelector('.login-container').style.display = 'none';
+                document.querySelector('.signup-container').style.display = 'block';
+                document.querySelector('.signup-container').classList.remove('fadeOutLeft');
+                document.querySelector('.signup-container').classList.add('fadeInLeft');
+            }, 500);
+        });
+
+        document.getElementById('showLogin').addEventListener('click', function() {
+            document.querySelector('.signup-container').classList.add('fadeOutLeft');
+            setTimeout(function() {
+                document.querySelector('.signup-container').style.display = 'none';
+                document.querySelector('.login-container').style.display = 'block';
+                document.querySelector('.login-container').classList.remove('fadeOutRight');
+                document.querySelector('.login-container').classList.add('fadeInRight');
+            }, 500);
+        });
+
+        // JavaScript to handle placeholder text on focus and blur
+        document.querySelectorAll('.form-group input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.setAttribute('placeholder', `Enter your ${this.name}`);
+            });
+            input.addEventListener('blur', function() {
+                this.removeAttribute('placeholder');
+            });
+        });
+    </script>
+</body>
+</html>
