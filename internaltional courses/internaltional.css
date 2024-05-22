@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Poppins:wght@400;600&family=Ubuntu+Condensed&display=swap');
+
+:root {
+    --font-family-01: 'Acme', sans-serif;
+    --font-family-02: 'Poppins', sans-serif;
+    --font-family-03: 'Ubuntu Condensed', sans-serif;
+
+    --white-01: #FFFFFF;
+    --black-01: #000000;
+    --blue-01: #0684BE;
+    --blue-02: #04668D;
+    --orange-01: #F36915;
+    --orange-02: #FB8C00;
+    --green-01: #4CAF50;
+    --green-02: #388E3C;
+    --yellow-01: #FFEB3B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family-02);
+    background-color: var(--white-01);
+    color: var(--black-01);
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.navbar {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo img {
+    width: 150px;
+}
+
+.nav-items {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item {
+    list-style: none;
+    font-family: var(--font-family-02);
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-item a {
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--blue-02);
+}
+
+.nav-item:hover {
+    transform: translateY(-0.75rem);
+}
+
+.image-container {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.card {
+    background-color: var(--blue-01);
+    border-radius: 10px;
+    color: white;
+    flex: 0 1 30%;
+    margin: 15px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+
+.card:hover {
+    background-color: var(--blue-02);
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    border-radius: 50%;
+    height: 120px;
+    margin-bottom: 20px;
+    width: 120px;
+    transition: transform 0.3s;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    font-family: var(--font-family-01);
+}
+
+.card p {
+    margin-bottom: 20px;
+}
+
+.learn-more-btn {
+    background-color: var(--orange-01);
+    border: none;
+    border-radius: 5px;
+    color: var(--white-01);
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.learn-more-btn:hover {
+    background-color: var(--orange-02);
+    transform: scale(1.05);
+}
+
+.icon {
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+}
+
+footer {
+    background-color: var(--blue-02);
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+#backToTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--orange-01);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#backToTopButton .icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+#backToTopButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.whatsapp-icon {
+    position: fixed;
+    top: 50%;
+    right: 10px; 
+    transform: translateY(-50%);
+    z-index: 1000; 
+    font-size: 48px;
+    color: #25D366; 
+    cursor: pointer;
+    text-decoration: none; /* Remove default link underline */
+}
+@media only screen and (max-width: 768px) {
+   .navbar {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo img {
+        width: 120px;
+    }
+
+    .nav-icon {
+        display: block; /* Show the nav icon */
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        flex: 0 1 80%; /* Increase card width */
+    }
+
+    .image-container {
+        height: 300px; /* Reduce image container height */
+    }
+
+    footer {
+        padding: 0.5rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-items {
+        width: 100%;
+        justify-content: space-around;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .containers {
+        flex-direction: column;
+        align-items: center;
+    }
+}
