@@ -1,0 +1,99 @@
+.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.card {
+    border-radius: 1rem;
+    color: var(--black-01);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 30rem;
+    min-width: 20rem;
+    margin: 0.5rem;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+
+.card:hover {
+    background-color: var(--blue-02-glass);
+    transform: translateY(-0.75rem);
+    box-shadow: 0 8px 16px #00000020;
+}
+
+.card-header-pic {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+    height: 15rem;
+    max-height: 20rem;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+}
+
+.card h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-family-01);
+    color: var(--orange-01);
+}
+
+.card p {
+    margin-bottom: 1.5rem;
+    padding: 0.3rem;
+    text-align: justify;
+}
+
+.button:hover {
+    background-color: var(--blue-02);
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .card {
+        width: calc(50% - 1rem);
+        max-width: 45%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .card {
+        width: calc(33.333% - 1rem);
+        max-width: 30%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .row-flex {
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 767px) {
+    .student-img {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .logo-img {
+        width: 40%;
+        aspect-ratio: 1;
+    }
+
+    .student-img {
+        display: block; 
+        object-fit: contain;
+    }
+}
